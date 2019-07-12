@@ -1,0 +1,3 @@
+SELECT taskId, createDateTime, statusDate FROM T_TASK
+WHERE (assignedGroupId = 6)
+AND taskStatusId = 3;

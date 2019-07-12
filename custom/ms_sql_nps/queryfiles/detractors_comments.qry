@@ -1,0 +1,12 @@
+SELECT SRV_RESP.respondentId, SRV_RESP.completeDateTime, COMMENT.comment
+FROM T_ANSWER_SCORE SCORE
+INNER JOIN T_SURVEY_ANSWER SRV_ANS
+on SRV_ANS.optionId = SCORE.answerId
+INNER JOIN T_SURVEY_RESPONSE SRV_RESP
+on SRV_RESP.respondentId = SRV_ANS.respondentId
+INNER JOIN T_SURVEY_COMMENT COMMENT
+on COMMENT.respondentId = SRV_RESP.respondentId
+WHERE SCORE.npsTypeId = 1 --Detractors Only
+AND SRV_RESP.completeDateTime >= '2019-1-1 12:00:00 AM'
+AND SRV_RESP.completeDateTime <= '2019-5-23 11:59:59 PM'
+AND SRV_RESP.surveyId = 47032133

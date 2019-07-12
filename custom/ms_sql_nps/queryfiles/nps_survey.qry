@@ -1,0 +1,15 @@
+SELECT QST.questionNumber, QST.questionText, ANS.answerText, 
+							ORD.respondentId, ORD.workorder, SRV_RSP.completeDateTimeLocal, 
+							ORD.customername, SRV_CMT.comment
+							FROM T_SURVEY_ANSWER SRV_ANS 
+							INNER JOIN T_ANSWER ANS
+							on ANS.answerId = SRV_ANS.optionId
+							INNER JOIN T_SURVEY_RESPONSE SRV_RSP
+							on SRV_RSP.respondentId = SRV_ANS.respondentId
+							INNER JOIN T_QUESTION QST
+							on QST.questionId = SRV_ANS.questionId
+							INNER JOIN T_WORK_ORDER ORD
+							on ORD.respondentId = SRV_ANS.respondentId
+							INNER JOIN T_SURVEY_COMMENT SRV_CMT
+							on SRV_CMT.respondentId = ORD.respondentId
+							WHERE SRV_CMT.respondentId =  5603186113 

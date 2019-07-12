@@ -1,0 +1,9 @@
+SELECT TASK.taskId, TASK.taskDescription, TASK.statusDate, USR.firstName, 
+USR.lastName, GRP.securityGroupName,  STAT.taskStatus
+FROM T_TASK TASK
+INNER JOIN T_SEC_USR USR
+on USR.userId = TASK.assignedUserId
+INNER JOIN T_TASK_STATUS STAT
+on STAT.taskStatusId = TASK.taskStatusId
+INNER JOIN T_SEC_GROUP GRP
+on GRP.securityGroupId = TASK.assignedGroupId
